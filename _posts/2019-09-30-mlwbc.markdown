@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Machine-based detection and classification for bone marrow aspirate differential counts: initial development focusing on nonneoplastic cells"
-date:   2023-08-28 22:21:59 +00:00
+date:   2019-09-30
 image: /images/wbc.png
 categories: undergraduate
 author: "Nilakshan Kunananthaseelan"
@@ -12,4 +12,4 @@ paper: https://www.nature.com/articles/s41374-019-0325-7
 # code: https://github.com/NilakshanKunananthaseelan/LaViP
 website: https://www.pathdata.io/projects/heme
 ---
-We introduce a language-grounded visual prompting method to adapt the visual encoder of vision-language models for downstream tasks.
+We introduce a deeplearning pipeline for detection and classification of whiteblood cells from bonemarrow slide images.
