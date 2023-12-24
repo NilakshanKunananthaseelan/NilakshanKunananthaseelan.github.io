@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "LaViP: Language-Grounded Visual Prompts"
-date:   2024
+date:   2024-02-20
 image: /images/lavip.png
 categories: research
 author: "Nilakshan Kunananthaseelan"
