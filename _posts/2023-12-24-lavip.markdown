@@ -1,0 +1,14 @@
+---
+layout: post
+title:  "LaViP: Language-Grounded Visual Prompts"
+date:   2023-08-28 22:21:59 +00:00
+image: /images/lavip.png
+categories: research
+author: "Nilakshan Kunananthaseelan"
+authors: "<strong>Nilakshan Kunananthaseelan</strong>, Jing Zhang, Mehrtash Harandi"
+venue: "AAAI,2024"
+arxiv: https://arxiv.org/abs/2312.10945
+code: https://github.com/NilakshanKunananthaseelan/LaViP
+
+---
+We introduce a language-grounded visual prompting method to adapt the visual encoder of vision-language models for downstream tasks.
