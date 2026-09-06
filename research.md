@@ -6,7 +6,7 @@ description: Publications and research questions explored by Nilakshan Kunananth
 ---
 <header class="page-intro page-intro--wide">
   <p class="eyebrow">Research</p>
-  <h1>Multimodal systems should <em>adapt, reason, and earn trust</em>.</h1>
+  <h1>Intelligence must adapt—<em>without losing what matters</em>.</h1>
   <p class="lede">My research asks how multimodal models can be adapted efficiently, how they can reason over diverse evidence, and how AI agents can act reliably as their tasks and environments change.</p>
 </header>
 
