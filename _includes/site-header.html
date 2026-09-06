@@ -1,0 +1,27 @@
+{% assign section_name = 'Home' %}
+{% if page.url == '/research/' or page.url == '/research_statement.html' or page.collection == 'papers' %}
+  {% assign section_name = 'Research' %}
+{% elsif page.url == '/writing/' or page.layout == 'post' %}
+  {% assign section_name = 'Writing' %}
+{% elsif page.url == '/about/' %}
+  {% assign section_name = 'About' %}
+{% elsif page.url == '/404.html' %}
+  {% assign section_name = '404' %}
+{% endif %}
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="wordmark" href="{{ '/' | relative_url }}" aria-label="{{ site.title }}, home">
+      <span class="wordmark__name">Nilakshan Kunananthaseelan</span>
+      <span class="wordmark__mark" aria-hidden="true">/</span>
+      <span class="wordmark__field">{{ section_name }}</span>
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="{{ '/research/' | relative_url }}"{% if page.url == '/research/' or page.collection == 'papers' %} aria-current="page"{% endif %}>Research</a>
+      <a href="{{ '/writing/' | relative_url }}"{% if page.url == '/writing/' or page.layout == 'post' %} aria-current="page"{% endif %}>Writing</a>
+      <a href="{{ '/about/' | relative_url }}"{% if page.url == '/about/' %} aria-current="page"{% endif %}>About</a>
+      <a href="{{ '/pdfs/CV_Nilakshan.pdf' | relative_url }}">CV <span aria-hidden="true">↗</span></a>
+    </nav>
+  </div>
+</header>

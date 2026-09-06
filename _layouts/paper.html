@@ -1,0 +1,137 @@
+---
+layout: default
+---
+{% assign paper_matches = site.data.publications | where: 'slug', page.paper_id %}
+{% assign paper = paper_matches | first %}
+
+<article class="paper-page">
+  <a class="paper-page__back" href="{{ '/research/' | relative_url }}">← All research</a>
+
+  <header class="paper-hero">
+    <p class="paper-hero__venue">{{ paper.venue }} · {{ paper.year }}</p>
+    <h1>{{ paper.title }}</h1>
+    <p class="paper-hero__authors">{{ paper.authors | replace: 'Nilakshan Kunananthaseelan', '<strong>Nilakshan Kunananthaseelan</strong>' }}</p>
+    {% if page.affiliation %}<p class="paper-hero__affiliation">{{ page.affiliation }}</p>{% endif %}
+    <p class="paper-hero__summary">{{ paper.description }}</p>
+
+    <div class="paper-hero__links" aria-label="Paper resources">
+      {% for link in paper.links %}
+        {% assign link_label = link.label | downcase %}
+        <a class="paper-resource" href="{{ link.url }}" target="_blank" rel="noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            {% if link_label contains 'code' %}
+              <path d="m8.5 8-4 4 4 4M15.5 8l4 4-4 4M14 5l-4 14" />
+            {% elsif link_label contains 'pdf' or link_label contains 'paper' or link_label contains 'arxiv' %}
+              <path d="M7 3h7l4 4v14H7zM14 3v5h4M10 13h5M10 17h5" />
+            {% else %}
+              <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18ZM3 12h18M12 3c2.2 2.5 3.4 5.5 3.4 9s-1.2 6.5-3.4 9c-2.2-2.5-3.4-5.5-3.4-9S9.8 5.5 12 3Z" />
+            {% endif %}
+          </svg>
+          <span>{{ link.label }}</span>
+        </a>
+      {% endfor %}
+    </div>
+
+    {% if page.topics %}
+      <ul class="paper-topics" aria-label="Research topics">
+        {% for topic in page.topics %}<li>{{ topic }}</li>{% endfor %}
+      </ul>
+    {% endif %}
+  </header>
+
+  {% if page.image %}
+    <figure class="paper-figure">
+      <div class="paper-figure__canvas">
+        <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt }}">
+      </div>
+      {% if page.image_caption %}<figcaption>{{ page.image_caption }}</figcaption>{% endif %}
+    </figure>
+  {% endif %}
+
+  <section class="paper-overview" aria-label="Paper overview">
+    <p class="eyebrow">Research summary</p>
+    <div class="paper-content">
+      {{ content }}
+    </div>
+  </section>
+
+  {% if page.citation %}
+    <section class="paper-citation" aria-labelledby="citation-heading">
+      <div class="paper-citation__heading">
+        <div>
+          <p class="eyebrow">Use this work</p>
+          <h2 id="citation-heading">Citation</h2>
+        </div>
+        {% if page.bibtex %}
+          <button class="copy-bibtex" type="button" data-copy-target="paper-bibtex" aria-describedby="copy-status">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="8" y="8" width="11" height="11" rx="2" />
+              <path d="M16 8V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h1" />
+            </svg>
+            <span class="copy-bibtex__label">Copy BibTeX</span>
+          </button>
+        {% endif %}
+      </div>
+
+      <p class="paper-citation__reference">{{ page.citation }}</p>
+
+      {% if page.bibtex %}
+        <div class="paper-citation__code">
+          <pre><code id="paper-bibtex">{{ page.bibtex | escape }}</code></pre>
+        </div>
+        <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+      {% endif %}
+    </section>
+  {% endif %}
+
+  <footer class="paper-page__footer">
+    <a class="text-link" href="{{ '/research/' | relative_url }}">← Explore all research</a>
+    <a class="text-link" href="mailto:nilakjhc@gmail.com">Discuss this work ↗</a>
+  </footer>
+</article>
+
+{% if page.bibtex %}
+<script>
+  (function () {
+    var button = document.querySelector('[data-copy-target="paper-bibtex"]');
+    var code = document.getElementById('paper-bibtex');
+    var status = document.getElementById('copy-status');
+
+    if (!button || !code || !status) return;
+
+    function fallbackCopy(text) {
+      var textArea = document.createElement('textarea');
+      textArea.value = text;
+      textArea.setAttribute('readonly', '');
+      textArea.style.position = 'fixed';
+      textArea.style.opacity = '0';
+      document.body.appendChild(textArea);
+      textArea.select();
+      var copied = document.execCommand('copy');
+      document.body.removeChild(textArea);
+      if (!copied) throw new Error('Copy command was unavailable');
+    }
+
+    button.addEventListener('click', function () {
+      var bibtex = code.textContent.trim();
+      var copyAction = navigator.clipboard && window.isSecureContext
+        ? navigator.clipboard.writeText(bibtex)
+        : Promise.resolve().then(function () { fallbackCopy(bibtex); });
+
+      copyAction.then(function () {
+        button.classList.add('is-copied');
+        button.querySelector('.copy-bibtex__label').textContent = 'Copied';
+        status.textContent = 'BibTeX copied to clipboard.';
+
+        window.setTimeout(function () {
+          button.classList.remove('is-copied');
+          button.querySelector('.copy-bibtex__label').textContent = 'Copy BibTeX';
+          status.textContent = '';
+        }, 2200);
+      }).catch(function () {
+        status.textContent = 'Copy failed. Select the BibTeX text and copy it manually.';
+      });
+    });
+  }());
+</script>
+{% endif %}

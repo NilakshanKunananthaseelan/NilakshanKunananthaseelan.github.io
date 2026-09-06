@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Machine-based detection and classification for bone marrow aspirate differential counts: initial development focusing on nonneoplastic cells"
+published: false
 date:   2019-09-30
 image: /images/wbc.png
 categories: undergraduate

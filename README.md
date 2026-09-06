@@ -1,14 +1,44 @@
-# updated website
+# Nilakshan Kunananthaseelan — research portfolio
 
-This repo is built on a fork of **Jekyll Now** from [this repository](https://github.com/barryclark/jekyll-now). **Jekyll** is a static site generator that's perfect for GitHub hosted blogs ([Jekyll Repository](https://github.com/jekyll/jekyll))
+A deliberately small Jekyll site for GitHub Pages. The site uses semantic HTML, one stylesheet, and no client-side JavaScript or third-party UI framework.
 
-The website design is just a modification of [Jon Barron's website](https://jonbarron.info/) and is converted for my own use, re-purposing my old markdown posts. **Feel free to use template for your own purposes**, but please respect copyright for all the images/content in my `images`, `pdfs`, `_posts` folders. 
+## Run locally
 
+```bash
+bundle install
+bundle exec jekyll serve
+```
 
+Then visit `http://127.0.0.1:4000`.
 
-## issues
-* In general, jekyll will try to build a full page for every post. I skip that by forcing `permalink: /`. This creates multiple entries in sitemap.xml for index.html but is otherwise fine. 
-* If you want multiple paragraphs, consider using `excerpt_separator: <!--more-->` in `_config.yml`, for my own use I didn't need this. 
-* My own posts have lots of extra stuff left over from my old jekyll design ("author", long descriptions, etc.), feel free to ignore them
-* I use thumbnails, so I can upload arbitrary sized images but then only display small ones. The `_make_thumbnails.sh` script generates them and the html template looks in `tn/` for all images. 
-* I have three categories of post with slightly differerent formatting, so changing sizing requires edits in multiple paces. 
+## Add a publication
+
+Edit `_data/publications.yml`. Each publication can contain a title, year, venue, authors, short description, internal paper-page URL, and any number of external links. Set `featured: true` to include it on the home page.
+
+Create the matching paper page in `_papers` using an existing file as a template. The `paper_id` in its front matter must match the publication's `slug`. Jekyll publishes these pages at `/papers/<filename>/`.
+
+## Write a post
+
+Create a Markdown file in `_posts` using the filename format `YYYY-MM-DD-short-title.md`:
+
+```yaml
+---
+layout: post
+title: "A clear title"
+date: 2026-08-17
+description: "A one-sentence summary used on the writing index."
+categories: writing
+reading_time: 6
+---
+```
+
+Everything after the front matter is ordinary Markdown. Only posts with the `writing` category appear in the public writing index, which keeps publication records and essays separate.
+
+## Main content
+
+- `index.html` — home page
+- `research.md` — research programme and publications
+- `writing.md` — essay index
+- `about.md` — biography, experience, and service
+- `_data/publications.yml` — publication data
+- `style.scss` — complete visual system

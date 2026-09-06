@@ -1,0 +1,16 @@
+{% assign publication = include.publication %}
+<article class="publication">
+  <div class="publication__year">{{ publication.year }}</div>
+  <div class="publication__body">
+    <h3><a class="publication__title-link" href="{{ publication.page | relative_url }}">{{ publication.title }}</a></h3>
+    <p class="publication__venue">{{ publication.venue }}</p>
+    <p>{{ publication.description }}</p>
+    <p class="publication__authors">{{ publication.authors | replace: 'Nilakshan Kunananthaseelan', '<strong>Nilakshan Kunananthaseelan</strong>' }}</p>
+    <div class="publication__links">
+      <a href="{{ publication.page | relative_url }}">Overview <span aria-hidden="true">→</span></a>
+      {% for link in publication.links %}
+        <a href="{{ link.url }}">{{ link.label }} <span aria-hidden="true">↗</span></a>
+      {% endfor %}
+    </div>
+  </div>
+</article>

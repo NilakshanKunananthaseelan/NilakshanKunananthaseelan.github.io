@@ -1,0 +1,69 @@
+- title: "OntoForm: Ontology-Grounded Semantic Data Generation for Enterprise Document Understanding"
+  slug: ontoform
+  page: /papers/ontoform/
+  year: 2026
+  venue: "EMNLP 2026 · Industry Track"
+  authors: "Nilakshan Kunananthaseelan, Benjamin Kane, Siddharth Jain, Mahsa Ghorbanali, Fatemeh Shiri, Raj Tumuluri, Gholamreza Haffari"
+  description: "A semantic-first framework for generating privacy-preserving enterprise form packets with ontology-grounded extraction, question answering, and validation signals."
+  featured: true
+  links:
+    - label: PDF
+      url: "/pdfs/OntoForm.pdf"
+
+- title: "DIET: Machine Unlearning on a Data-Diet"
+  slug: diet
+  page: /papers/diet/
+  year: 2026
+  venue: "AAAI Conference on Artificial Intelligence · Oral"
+  authors: "Nilakshan Kunananthaseelan, Jing Wu, Trung Le, Gholamreza Haffari, Mehrtash Harandi"
+  description: "A retain-data-free method for targeted unlearning in vision-language models, using hyperbolic geometry to remove concepts while preserving surrounding knowledge."
+  featured: true
+  links:
+    - label: Paper
+      url: "https://ojs.aaai.org/index.php/AAAI/article/view/39431"
+    - label: PDF
+      url: "https://ojs.aaai.org/index.php/AAAI/article/download/39431/43392"
+
+- title: "Optimizing Waste Handling with Interactive AI"
+  slug: waste-handling
+  page: /papers/waste-handling/
+  year: 2024
+  venue: "Waste Management"
+  authors: "Diani Sirimewan, Nilakshan Kunananthaseelan, Sudharshan Raman, Reyes Garcia, Mehrdad Arashpour"
+  description: "Prompt-guided segmentation for construction and demolition waste, supporting box, point, and text interaction in cluttered environments."
+  featured: true
+  links:
+    - label: Paper
+      url: "https://doi.org/10.1016/j.wasman.2024.09.018"
+    - label: Open access
+      url: "https://wrap.warwick.ac.uk/id/eprint/192124/"
+
+- title: "LaViP: Language-Grounded Visual Prompting"
+  slug: lavip
+  page: /papers/lavip/
+  year: 2024
+  venue: "AAAI Conference on Artificial Intelligence"
+  authors: "Nilakshan Kunananthaseelan, Jing Zhang, Mehrtash Harandi"
+  description: "A parameter-efficient way to adapt vision-language models by grounding visual prompts in language, including black-box settings."
+  featured: true
+  links:
+    - label: Paper
+      url: "https://ojs.aaai.org/index.php/AAAI/article/view/28064"
+    - label: arXiv
+      url: "https://arxiv.org/abs/2312.10945"
+    - label: Code
+      url: "https://github.com/NilakshanKunananthaseelan/LaViP"
+
+- title: "Machine-based Detection and Classification for Bone Marrow Aspirate Differential Counts"
+  slug: bone-marrow-cell-counts
+  page: /papers/bone-marrow-cell-counts/
+  year: 2020
+  venue: "Laboratory Investigation"
+  authors: "Ramraj Chandradevan, Ahmed A. Aljudi, Bradley R. Drumheller, Nilakshan Kunananthaseelan, Mohamed Amgad, David A. Gutman, Lee A. D. Cooper, David L. Jaye"
+  description: "A two-stage computer-vision system for detecting and classifying white blood cells in bone-marrow aspirate images."
+  featured: false
+  links:
+    - label: Paper
+      url: "https://www.nature.com/articles/s41374-019-0325-7"
+    - label: Project
+      url: "https://www.pathdata.io/projects/heme"
