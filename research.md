@@ -13,7 +13,7 @@ description: Publications and research questions explored by Nilakshan Kunananth
 <section class="research-program" aria-labelledby="program-heading">
   <div class="section-heading">
     <p class="eyebrow">Research programme</p>
-    <h2 id="program-heading">Three connected questions</h2>
+    <h2 id="program-heading">Questions guiding my work</h2>
   </div>
 
   <div class="research-question">
