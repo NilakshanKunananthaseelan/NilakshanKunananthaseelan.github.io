@@ -3,6 +3,7 @@ layout: default
 title: Writing
 permalink: /writing/
 description: Essays and research notes by Nilakshan Kunananthaseelan.
+published: false
 ---
 <header class="page-intro">
   <p class="eyebrow">Writing</p>
