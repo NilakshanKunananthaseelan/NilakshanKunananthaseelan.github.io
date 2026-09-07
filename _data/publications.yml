@@ -23,6 +23,8 @@
       url: "https://ojs.aaai.org/index.php/AAAI/article/view/39431"
     - label: PDF
       url: "https://ojs.aaai.org/index.php/AAAI/article/download/39431/43392"
+    - label: Code
+      url: "https://github.com/NilakshanKunananthaseelan/DIET"
 
 - title: "Optimizing Waste Handling with Interactive AI"
   slug: waste-handling
