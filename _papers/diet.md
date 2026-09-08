@@ -23,6 +23,11 @@ bibtex: |
   }
 ---
 
+<blockquote class="paper-epigraph">
+  <p>“In the practical use of our intellect, forgetting is as important a function as recollecting.”</p>
+  <footer>— William James, <cite>The Principles of Psychology, Vol. I</cite></footer>
+</blockquote>
+
 ## Why forgetting without retain data is hard
 
 Machine unlearning asks a trained model to remove a targeted concept without damaging everything else it has learned. Most methods protect that surrounding knowledge by training against a retain set. In practice, the original data may be private, unavailable, or too expensive to reconstruct.
