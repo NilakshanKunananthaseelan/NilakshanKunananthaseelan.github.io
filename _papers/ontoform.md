@@ -1,15 +1,16 @@
 ---
 title: "OntoForm: Ontology-Grounded Semantic Data Generation for Enterprise Document Understanding"
 paper_id: ontoform
-description: A semantic-first framework for generating privacy-preserving enterprise document supervision from ontology-grounded entities.
+description: An ontology-driven document compiler that generates linked enterprise forms and exact supervision from one validated business entity.
 affiliation: Openstream AI
 topics:
   - Document understanding
   - Synthetic data
   - Ontology grounding
-image: /images/ontoform-pipeline.png
-image_alt: Diagram of the OntoForm pipeline from ontology map and template through entity sampling, validation, rendering, and evaluation targets.
-image_caption: OntoForm compiles ontology maps and templates into hierarchical schemas, then renders validated entity records with traceable supervision signals.
+  - Cross-form reasoning
+image: /images/ontoform-semantic-pipeline.png
+image_alt: OntoForm defines an ontology, samples and validates an entity record, binds its values to template fields, and renders a consistent form packet with exact supervision.
+image_caption: Generate once at the semantic layer. One validated business entity anchors every rendered form and every training target.
 citation: "Kunananthaseelan, N., Kane, B., Jain, S., Ghorbanali, M., Shiri, F., Tumuluri, R., & Haffari, G. (2026). OntoForm: Ontology-Grounded Semantic Data Generation for Enterprise Document Understanding. EMNLP 2026 Industry Track."
 bibtex: |
   @inproceedings{kunananthaseelan2026ontoform,
@@ -20,15 +21,20 @@ bibtex: |
   }
 ---
 
-## Why enterprise forms are hard
+## Why linked forms need a shared entity
 
 Enterprise forms are not collections of independent fields. A submission can describe the same applicant, location, exposure, or coverage across recurring sections and several related documents. Those values must agree even when labels and layouts change.
 
-Authentic training data is difficult to obtain because forms contain sensitive information, require expensive annotation, and vary across organisations. Existing synthetic pipelines can make plausible pages, but independently filled fields may still contradict one another.
+Two separate problems motivate OntoForm. Authentic training data is difficult to obtain because forms contain sensitive information and require expensive annotation. Synthetic data addresses access and labelling costs, but generating fields independently can still produce contradictory documents. Ontology grounding addresses that second problem by preserving shared facts and dependencies across a packet.
+
+<figure class="paper-inline-figure">
+  <a href="{{ '/images/ontoform-linked-forms.png' | relative_url }}"><img src="{{ '/images/ontoform-linked-forms.png' | relative_url }}" alt="Independent field generation gives the same applicant conflicting tax IDs and employee counts; entity-first generation shares one validated record across an application, endorsement, and certificate." loading="lazy"></a>
+  <figcaption>Different labels can refer to the same fact. FEIN, Tax ID, and Employer ID must resolve to one semantic value across the packet. Select the diagram to view it at full size.</figcaption>
+</figure>
 
 <aside class="paper-callout">
   <p class="eyebrow">Core idea</p>
-  <p><strong>Generate the entity first; render the documents second.</strong> OntoForm models a coherent business record before projecting it into any template.</p>
+  <p><strong>Generate the entity first; render the documents second.</strong> OntoForm is an ontology-driven document compiler: one coherent business record becomes a consistent packet of forms with exact training targets.</p>
 </aside>
 
 ## A semantic-first pipeline
@@ -49,11 +55,18 @@ The compiler binds ontology paths to template fields, page indices, value types,
 
 A candidate record is accepted only when the validator confirms its types, required fields, cardinalities, temporal rules, and cross-document invariants. When possible, OntoForm resamples only the invalid subtree instead of discarding the whole record.
 
-## Traceable supervision, not just plausible pages
+<figure class="paper-inline-figure">
+  <a href="{{ '/images/ontoform-architecture.png' | relative_url }}"><img src="{{ '/images/ontoform-architecture.png' | relative_url }}" alt="Six stages: specify an ontology and template, compile a hierarchical schema, generate values in dependency order, validate the entity, render template-specific views, and export forms and labels. Failed validation resamples the violating subtree." loading="lazy"></a>
+  <figcaption>The ontology map and template bindings require manual authoring. Entity sampling, validation, rendering, and label export then run automatically. Select the diagram to inspect the full architecture.</figcaption>
+</figure>
+
+For example, the sampler can generate a workforce total of 19 and split it into 12 full-time and 7 part-time employees. The validator checks that the counts add up before the renderer places them in any document. A shared tax identifier can appear as “FEIN” on an application and “Tax ID” on an endorsement without changing its underlying value.
+
+## Exact supervision from the same record
 
 <figure class="paper-inline-figure">
-  <img src="{{ '/images/ontoform-ontology-paths.png' | relative_url }}" alt="A surrogate commercial insurance form with red callouts connecting visible values to ontology paths.">
-  <figcaption>Ontology-path callouts connect visible fields to stable semantic targets. Each value is exported with its ground truth and pixel-level bounding box.</figcaption>
+  <a href="{{ '/images/ontoform-supervision.png' | relative_url }}"><img src="{{ '/images/ontoform-supervision.png' | relative_url }}" alt="The FEIN value on a generated commercial application supplies its field bounding box, the ontology target organization.fein, a grounded question-answer pair, and validation metadata." loading="lazy"></a>
+  <figcaption>One rendered value supplies aligned field annotations, a stable ontology target, grounded QA, and machine-checkable validation metadata.</figcaption>
 </figure>
 
 Every rendered value can be traced to an ontology path, sampling rule, and template location. That single source record produces several aligned supervision signals:
@@ -64,6 +77,15 @@ Every rendered value can be traced to an ontology path, sampling rule, and templ
   <article><h3>Grounded QA</h3><p>Questions and answers tied to visible evidence in the rendered document.</p></article>
   <article><h3>Validation metadata</h3><p>Machine-checkable evidence for types, dependencies, and cross-form consistency.</p></article>
 </div>
+
+## Reasoning across a document packet
+
+Some questions require evidence from several forms. In the illustrated bakery scenario, the Commercial Application records vehicle use, General Liability records 1,250 annual deliveries, and Business Auto lists three delivery vans. A grounded response brings those facts together and identifies the evidence behind its answer.
+
+<figure class="paper-inline-figure">
+  <a href="{{ '/images/ontoform-cross-form-reasoning.png' | relative_url }}"><img src="{{ '/images/ontoform-cross-form-reasoning.png' | relative_url }}" alt="A bakery example combines vehicle use from a commercial application, 1,250 deliveries from general liability, and three vans from business auto. Exact reasoning rises from 18.33 to 52.50 with ontology-guided fine-tuning." loading="lazy"></a>
+  <figcaption>Illustrative evidence aggregation across three forms. In the controlled study, exact reasoning improves by 34.17 percentage points over training without ontology supervision.</figcaption>
+</figure>
 
 ## Evaluation at a glance
 
@@ -82,14 +104,15 @@ The controlled insurance study covers three surrogate form types: Commercial App
     </thead>
     <tbody>
       <tr><td>Does synthetic supervision help grounded QA?</td><td>ROUGE-L: 53.1 → 97.2</td><td><strong>+44.1</strong></td></tr>
-      <tr><td>Does it improve ontology-keyed extraction?</td><td>F1: 87.36 → 92.35</td><td><strong>+4.99</strong></td></tr>
+      <tr><td>Does ontology supervision improve matched fine-tuning?</td><td>Extraction F1: 88.63 → 92.35</td><td><strong>+3.72</strong></td></tr>
+      <tr><td>Does it correctly omit absent fields?</td><td>Accuracy including true negatives: 75.17 → 90.40</td><td><strong>+15.23</strong></td></tr>
       <tr><td>Does ontology guidance transfer to a held-out form?</td><td>F1: 60.90 → 96.95</td><td><strong>+36.05</strong></td></tr>
       <tr><td>Can the model recover concepts absent from training?</td><td>F1: 53.92 → 96.59</td><td><strong>+42.67</strong></td></tr>
       <tr><td>Can it reason across a multi-form packet?</td><td>Exact reasoning: 18.33 → 52.50</td><td><strong>+34.17</strong></td></tr>
     </tbody>
   </table>
 </div>
-<p class="paper-table-note">Scores are percentages or percentage-point gains. Comparisons follow the matched conditions reported in Tables 2–6 of the paper.</p>
+<p class="paper-table-note">Scores are percentages; gains are percentage points. QA compares zero-shot and fine-tuned models (Table 2). Extraction and omission handling compare fine-tuning without and with ontology supervision (Table 3). Held-out-form results compare the corresponding training and prompting conditions (Table 4). Cross-form reasoning compares the two fine-tuned models without ontology at inference (Table 6). The separate extraction gain over the ontology-conditioned zero-shot baseline is +4.99 F1 (87.36 → 92.35).</p>
 
 ## What ontology grounding changes
 

@@ -27,7 +27,7 @@ description: Publications and research questions explored by Nilakshan Kunananth
     <p class="research-question__index">02</p>
     <div>
       <h3>How can multimodal models reason reliably?</h3>
-      <p>I study how models combine visual observations, language, and structured knowledge to reach grounded conclusions. This includes document-understanding systems that must trace answers to evidence and reason consistently across related forms.</p>
+      <p>I study how models combine visual observations, language, and structured knowledge to reach grounded conclusions. In <a href="{{ '/papers/ontoform/' | relative_url }}">OntoForm</a>, one validated business entity generates linked forms with exact supervision, supporting ontology-keyed extraction, transfer to unseen forms, and reasoning across a document packet.</p>
     </div>
   </div>
   <div class="research-question">

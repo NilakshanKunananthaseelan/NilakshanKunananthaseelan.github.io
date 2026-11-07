@@ -6,7 +6,7 @@ description: About Nilakshan Kunananthaseelan, an AI researcher and machine lear
 ---
 <header class="page-intro page-intro--wide about-intro">
   <p class="eyebrow">About</p>
-  <h1>Researcher, engineer, and persistent <em>question-asker</em>.</h1>
+  <h1>Advancing AI through research. <em>Making it work through engineering.</em></h1>
   <div class="about-intro__grid">
     <p class="lede">I am an AI researcher based in Melbourne, working between first-principles research and end-to-end systems. I care about ideas that survive contact with real data, operating constraints, and careful evaluation.</p>
     <p>I completed my undergraduate studies in Electronic and Telecommunication Engineering at the University of Moratuwa. My doctoral research at Monash University explores multimodal adaptation of foundation models—from language-grounded visual prompting to retain-free machine unlearning.</p>
@@ -21,7 +21,7 @@ description: About Nilakshan Kunananthaseelan, an AI researcher and machine lear
 
   <div class="timeline__item">
     <p class="timeline__period">2025—now</p>
-    <div><h3>Applied Research Scientist · OpenStreamAI</h3><p>Agentic AI, document-understanding vision-language systems, verification, and evaluation.</p></div>
+    <div><h3>Applied Scientist · Openstream AI</h3><p>Multimodal and agentic systems, ontology-grounded document understanding, and evidence-based evaluation. My work on OntoForm connects synthetic data generation with extraction and reasoning across related enterprise forms.</p></div>
   </div>
   <div class="timeline__item">
     <p class="timeline__period">2023—2026</p>

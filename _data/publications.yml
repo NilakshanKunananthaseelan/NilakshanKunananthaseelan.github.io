@@ -4,11 +4,13 @@
   year: 2026
   venue: "EMNLP 2026 · Industry Track"
   authors: "Nilakshan Kunananthaseelan, Benjamin Kane, Siddharth Jain, Mahsa Ghorbanali, Fatemeh Shiri, Raj Tumuluri, Gholamreza Haffari"
-  description: "A semantic-first framework for generating privacy-preserving enterprise form packets with ontology-grounded extraction, question answering, and validation signals."
+  description: "An ontology-driven document compiler that turns one validated business entity into linked enterprise forms with exact labels for extraction, grounded question answering, and cross-form reasoning."
   featured: true
   links:
     - label: PDF
       url: "/pdfs/OntoForm.pdf"
+    - label: Poster
+      url: "/pdfs/OntoForm-poster.pdf"
 
 - title: "DIET: Machine Unlearning on a Data-Diet"
   slug: diet
